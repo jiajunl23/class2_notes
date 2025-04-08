@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://generativeart.online/css/drawing-app.css">
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
+<script>
+/* global nn */
+// nn.create('span').content('😊').addTo('body')
+// nn.create('span').content('😊').addTo('body')
+// nn.create('span').content('😊').addTo('body')
+// nn.create('span').content('😊').addTo('body')
+// nn.create('span').content('😊').addTo('body')
+
+
+function emoji () {
+  requestAnimationFrame(emoji)
+  
+  const emojis = ['🤣',  '😂',  '🙂',  '😉',  '😊',  '😇',  '🥰',  '😍',  '🤩',  '😘',  '😗',  '☺️']
+  const random_emoji = nn.random(emojis)
+  
+  if (nn.mouseDown) {
+    const e = nn.create('span')
+    .content(random_emoji)
+    .css({
+      fontSize: '10px',
+      position: 'absolute',
+      left: nn.mouseX,
+      top: nn.mouseY
+    })
+    // .css({
+    //       fontSize: '10px',
+    //       position: 'absolute',
+    //       left: nn.random(nn.width),
+    //       top: nn.random(nn.height)
+    //     })
+    .addTo('body')
+    .on('click', () => e.remove())
+  }
+}
+  
+// function deleteEmoji () {
+//   e.remove()
+// }
+// nn.on functions that the function will execute after a certain 
+// event
+nn.on('load', emoji)
+nn.on('click', deleteEmoji)
+</script>
